@@ -1,4 +1,6 @@
 # AdaGrams
+## Plan of Action
+process each part of a wave on our own and try to work through it and code what we can. Check in on eachother for progress or questions. Get together to review code. Attend extra help sessions if needed.
 
 ## Skills Assessed
 
