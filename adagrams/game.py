@@ -29,17 +29,28 @@ LETTER_POOL = {
 }
 
 def draw_letters():
+    letter_freq = {}
     random_letters=[]
-    while len(random_letters) <10:
+    selected_letters =[]
+    while len(random_letters) < 26:
         r = random.choice(list(LETTER_POOL.keys()))
-        
         random_letters.append(r)
-    return random_letters
-    
+    for letter in random_letters:
+        if letter in letter_freq:
+            letter_freq[letter] += 1
+        else:
+            letter_freq[letter] = 1
+        if letter_freq[letter] <= LETTER_POOL[letter]:
+            selected_letters.append(letter)
+    return (selected_letters[0:10])
     
 
 def uses_available_letters(word, letter_bank):
-    pass
+    for letter in word:
+        if letter in letter_bank:
+            return True
+        else:
+            return False
 
 def score_word(word):
     pass
