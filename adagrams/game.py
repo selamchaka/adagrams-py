@@ -46,14 +46,38 @@ def draw_letters():
     
 
 def uses_available_letters(word, letter_bank):
+    # word_str = ""
+    # for letter in word:
+    #     if str.upper(letter) in letter_bank:
+    #         word_str += letter
+    # if word_str == word:
+    #     return True
+    # else:
+    #     return False
     word_str = ""
+    temp_word = ""
+    letter_bank_dic = {}
+    word_dic ={}
     for letter in word:
-        if letter in letter_bank:
-            word_str += letter
-    if word_str == word:
-        return True
-    else:
+        if str.upper(letter) in letter_bank:
+            temp_word += letter
+            word_str += str.upper(letter)
+    for letter in letter_bank:
+        if letter in letter_bank_dic:
+            letter_bank_dic[str.upper(letter)] += 1
+        else:
+            letter_bank_dic[str.upper(letter)] = 1
+    for letter in word_str:
+        if letter in word_dic:
+            word_dic[str.upper(letter)] += 1 
+        else:
+            word_dic[str.upper(letter)] = 1
+    if word_dic[letter] > letter_bank_dic[letter]:
         return False
+    elif temp_word != word:
+        return False
+    elif temp_word == word:
+        return True   
 
 def score_word(word):
     pass
