@@ -46,11 +46,14 @@ def draw_letters():
     
 
 def uses_available_letters(word, letter_bank):
+    word_str = ""
     for letter in word:
         if letter in letter_bank:
-            return True
-        else:
-            return False
+            word_str += letter
+    if word_str == word:
+        return True
+    else:
+        return False
 
 def score_word(word):
     pass
