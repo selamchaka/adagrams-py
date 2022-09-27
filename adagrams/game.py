@@ -115,20 +115,17 @@ def score_word(word):
     
     score_word = 0
     
-    for letter in word:
+    upper_word = str.upper(word)
+    
+    for letter in upper_word:
         for key, value in SCORE_CHART.items():
             if letter == key:
                 score_word += value
                 
-                if len(word) in range(7, 11):
-                    score_word += 8
+    if len(word) in range(7, 11):
+        score_word += 8
+        
     return score_word 
-
-
-
-
-
-
 
 
 
