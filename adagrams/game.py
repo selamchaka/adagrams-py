@@ -112,16 +112,17 @@ def uses_available_letters(word, letter_bank):
 def score_word(word):
     if word == "":
         return 0
-    
     score_word = 0
+    updated_word = str.upper(word)
+    # updated_score_chart = str.lower(SCORE_CHART)
     
-    for letter in word:
+    for letter in updated_word:
         for key, value in SCORE_CHART.items():
             if letter == key:
                 score_word += value
                 
-                if len(word) in range(7, 11):
-                    score_word += 8
+    if len(word) in range(7, 11):
+        score_word += 8
     return score_word 
 
 
