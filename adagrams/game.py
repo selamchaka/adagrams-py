@@ -73,20 +73,12 @@ def draw_letters():
             selected_letters.append(letter)
     return (selected_letters[0:10])
     
-
 def uses_available_letters(word, letter_bank):
-    # word_str = ""
-    # for letter in word:
-    #     if str.upper(letter) in letter_bank:
-    #         word_str += letter
-    # if word_str == word:
-    #     return True
-    # else:
-    #     return False
     word_str = ""
     temp_word = ""
     letter_bank_dic = {}
     word_dic ={}
+    
     for letter in word:
         if str.upper(letter) in letter_bank:
             temp_word += letter
@@ -108,14 +100,10 @@ def uses_available_letters(word, letter_bank):
     elif temp_word == word:
         return True   
 
-    
 def score_word(word):
     if word == "":
         return 0
     score_word = 0
-    updated_word = str.upper(word)
-    # updated_score_chart = str.lower(SCORE_CHART)
-    
     upper_word = str.upper(word)
     
     for letter in upper_word:
@@ -129,19 +117,31 @@ def score_word(word):
     return score_word 
 
 
-
 def get_highest_word_score(word_list):
-    highest_word = ""
-    highest_value = 0 
-    
+    highest_word = []
+    highest_value = 0
+    tie_word = []
     for word in word_list:
         word_score = score_word(word)
         if word_score > highest_value:
-            highest_value = word_score 
-            highest_word = word 
+            highest_word = word
+            highest_value = word_score
+            tie_word = [highest_word]
+        elif word_score == highest_value: # tie case
+            tie_word.append(word)
+
+    if len(tie_word) > 1 :
+        if len(tie_word[0]) > len(tie_word[1]) and len(tie_word[0])==10 :
+            return (tie_word[0], highest_value)
+        elif len(tie_word[0]) < len(tie_word[1]) and len(tie_word[1])!=10 :
+            return (tie_word[0], highest_value)
+        elif len(tie_word[0]) == len(tie_word[1]):
+            return(tie_word[0], highest_value)
+        else:
+            return(tie_word[1], highest_value)
     
     return (highest_word, highest_value)
-        
+
             
     
     
