@@ -1,4 +1,5 @@
-import random
+import secrets
+
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -62,7 +63,7 @@ def draw_letters():
     random_letters=[]
     selected_letters =[]
     while len(random_letters) < 26:
-        r = random.choice(list(LETTER_POOL.keys()))
+        r = secrets.SystemRandom().choice(list(LETTER_POOL.keys()))
         random_letters.append(r)
     for letter in random_letters:
         if letter in letter_freq:
